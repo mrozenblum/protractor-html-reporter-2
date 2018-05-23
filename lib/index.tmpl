@@ -53,7 +53,7 @@
             </a>
           </h4>
         </div>
-        <div id="logOutput" class="collapse">
+        <div id="logOutput" class="panel-collapse collapse in">
           <div class="panel-body">
             <div class="row">
               <div class="clearfix metadata col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -66,8 +66,8 @@
               </div>
             </div>
              <div class="row">
-              <div class="chart col-lg-6 col-md-6" id="piechart_testsuites1"></div>
-              <div class="chart col-lg-6 col-md-6" id="piechart_testcases1"></div>
+              <div class="chart col-lg-6 col-md-6" id="piechart_browser"></div>
+              <div class="chart col-lg-6 col-md-6" id="piechart_os"></div>
             </div>
           </div>
         </div>
@@ -111,24 +111,27 @@
                                                               "failed": <%= allSuites.failed %>
         })
       });
-      google.charts.setOnLoadCallback(function() {drawChart({
-                                                              "title": "TestSuites1",
-                                                              "passed": <%= suitesSummary.passed %>,
-                                                              "failed": <%= suitesSummary.failed %>,
+      google.charts.setOnLoadCallback(function() {drawBrowserChart({
+                                                              "title": "Browser",
+                                                              "chrome": <%= 4 %>,
+                                                              "firefox": <%= 3 %>,
+                                                              "safari": <%= 1 %>,
+                                                              "edge": <%= 2 %>
         })
       });
-      google.charts.setOnLoadCallback(function() {drawChart({
-                                                              "title": "TestCases1",
-                                                              "passed": <%= 3 %>,
-                                                              "skipped": <%= 1 %>,
-                                                              "errors": <%= 2 %>,
-                                                              "failed": <%= 2 %>
+      google.charts.setOnLoadCallback(function() {drawOSChart({
+                                                              "title": "OS",
+                                                              "windows": <%= 3 %>,
+                                                              "mac": <%= 1 %>,
+                                                              "linux": <%= 2 %>
         })
       });
 
     </script>
     <script>
       <%= piechart %>
+      <%= browserPiechart %>
+      <%= osPiechart %>
     </script>
 
   </body>
