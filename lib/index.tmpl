@@ -113,10 +113,9 @@
       });
       google.charts.setOnLoadCallback(function() {drawBrowserChart({
                                                               "title": "Browser",
-                                                              "chrome": <%= 4 %>,
-                                                              "firefox": <%= 3 %>,
-                                                              "safari": <%= 1 %>,
-                                                              "edge": <%= 2 %>
+                                                              "passed": <%= bpreport.chrome.passed +  bpreport.firefox.passed %>,
+                                                              "chrome": <%= bpreport.chrome.failed %>,
+                                                              "firefox": <%= bpreport.firefox.failed %>
         })
       });
       google.charts.setOnLoadCallback(function() {drawOSChart({
